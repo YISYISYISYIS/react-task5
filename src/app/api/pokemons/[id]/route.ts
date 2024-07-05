@@ -1,26 +1,29 @@
 import { NextResponse } from "next/server";
 import axios from "axios";
+import { Pokemon } from "@/types/pokemon";
 
 export const GET = async (
   _request: Request,
   { params }: { params: { id: string } }
-) => {
+): Promise<NextResponse> => {
   const { id } = params;
 
   try {
-    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    const response = await axios.get<Pokemon>(
+      `https://pokeapi.co/api/v2/pokemon/${id}`
+    );
     const speciesResponse = await axios.get(
       `https://pokeapi.co/api/v2/pokemon-species/${id}`
     );
-
-    const koreanName = speciesResponse.data.names?.find(
+    // console.log(speciesResponse);
+    const koreanName: Pokemon = speciesResponse.data.names?.find(
       (name: any) => name.language.name === "ko"
     );
 
     const typesWithKoreanNames = await Promise.all(
       response.data.types.map(async (type: any) => {
         const typeResponse = await axios.get(type.type.url);
-        const koreanTypeName =
+        const koreanTypeName: Pokemon =
           typeResponse.data.names?.find(
             (name: any) => name.language.name === "ko"
           )?.name || type.type.name;
@@ -53,7 +56,7 @@ export const GET = async (
       })
     );
 
-    const pokemonData = {
+    const pokemonData: Pokemon = {
       ...response.data,
       korean_name: koreanName?.name || response.data.name,
       types: typesWithKoreanNames,

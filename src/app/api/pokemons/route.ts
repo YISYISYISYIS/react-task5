@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 
 const TOTAL_POKEMON = 151;
 
@@ -20,8 +20,7 @@ export const GET = async (_: Request): Promise<NextResponse> => {
       }
     );
 
-    const allPokemonResponses: [AxiosResponse, AxiosResponse][] =
-      await Promise.all(allPokemonPromises);
+    const allPokemonResponses = await Promise.all(allPokemonPromises);
 
     const allPokemonData = allPokemonResponses.map(
       ([response, speciesResponse], index) => {
