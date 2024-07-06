@@ -23,9 +23,14 @@ export default function RootLayout({
             <Link href="/">
               <h1 className="font-bold text-white">나만의 포켓몬 도감</h1>
             </Link>
-            <Link href="login">
-              <button className="font-bold text-white">로그인</button>
-            </Link>
+            <div className="space-x-4">
+              <Link href="/signUp">
+                <button className="font-bold text-white">회원가입</button>
+              </Link>
+              <Link href="/login">
+                <button className="font-bold text-white">로그인</button>
+              </Link>
+            </div>
           </nav>
         </header>
         {children}

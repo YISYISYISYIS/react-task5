@@ -5,7 +5,7 @@ import { Pokemon } from "@/types/pokemon";
 export const GET = async (
   _request: Request,
   { params }: { params: { id: string } }
-): Promise<NextResponse> => {
+) => {
   const { id } = params;
 
   try {
