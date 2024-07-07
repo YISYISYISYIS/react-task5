@@ -3,7 +3,7 @@ import react, { useEffect, useState } from "react";
 import supabase from "@/apis/supabaseKey";
 import { useRouter } from "next/navigation";
 
-const loginPage = () => {
+const LoginPage = () => {
   // const [posts, setPosts] = useState([]);
 
   // async function getPosts() {
@@ -131,4 +131,4 @@ const loginPage = () => {
   );
 };
 
-export default loginPage;
+export default LoginPage;

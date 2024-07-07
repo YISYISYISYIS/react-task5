@@ -4,7 +4,7 @@ import supabase from "@/apis/supabaseKey";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const signUpPage = () => {
+const SignUpPage = () => {
   const [email, setEmail] = useState<string>("");
   const [nickname, setNickname] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -144,4 +144,4 @@ const signUpPage = () => {
   );
 };
 
-export default signUpPage;
+export default SignUpPage;
