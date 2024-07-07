@@ -44,7 +44,7 @@ const signUpPage = () => {
         password: password,
         options: {
           data: {
-            nickname: nickname,
+            name: nickname,
           },
         },
       });
@@ -53,7 +53,7 @@ const signUpPage = () => {
       setEmail("");
       setPassword("");
       setConfirmPassword("");
-      router.push("/");
+      router.push("/signUp");
     } catch (error) {
       console.error("회원가입 오류:", error);
     }
@@ -90,7 +90,7 @@ const signUpPage = () => {
               id="nickname"
               type="text"
               value={nickname}
-              placeholder="닉네임을 입력 해주세요"
+              placeholder="닉네임은 2~10자 사이"
               className="mt-1 p-2 w-full border rounded"
               onChange={(e) => setNickname(e.target.value.replace(/\s/g, ""))}
               required
@@ -125,6 +125,7 @@ const signUpPage = () => {
               type="Password"
               value={confirmPassword}
               className="mt-1 p-2 w-full border rounded"
+              placeholder="비밀번호 6자 이상 12자이하"
               onChange={(e) =>
                 setConfirmPassword(e.target.value.replace(/\s/g, ""))
               }

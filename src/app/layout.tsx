@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Link from "next/link";
 import "./globals.css";
+import Header from "@/component/Header";
+import AuthProvider from "@/app/contexts/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,22 +19,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={inter.className}>
-        <header className="w-full h-14 bg-slate-700 flex justify-between items-center px-20">
-          <nav className="w-full flex justify-between items-center px-20">
-            <Link href="/">
-              <h1 className="font-bold text-white">나만의 포켓몬 도감</h1>
-            </Link>
-            <div className="space-x-4">
-              <Link href="/signUp">
-                <button className="font-bold text-white">회원가입</button>
-              </Link>
-              <Link href="/login">
-                <button className="font-bold text-white">로그인</button>
-              </Link>
-            </div>
-          </nav>
-        </header>
-        {children}
+        <AuthProvider>
+          <Header />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
