@@ -20,7 +20,7 @@ const Header = () => {
     <header className="w-full h-14 bg-slate-700 flex justify-between items-center px-20">
       <nav className="w-full flex justify-between items-center px-20">
         <Link href="/">
-          <h1 className="font-bold text-white">나만의 포켓몬 도감</h1>
+          <h1 className="font-bold text-white">나만의 포켓몬 도감 </h1>
         </Link>
         <div className="space-x-4">
           {isLogin ? (
