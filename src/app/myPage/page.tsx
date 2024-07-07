@@ -12,7 +12,7 @@ const MyPage = () => {
     if (!isLogin) {
       router.push("/");
     }
-  }, [isLogin]);
+  }, [isLogin, router]);
   return (
     <>
       <div>닉네임 {session?.user?.user_metadata?.name}</div>
